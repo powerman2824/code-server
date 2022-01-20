@@ -182,7 +182,7 @@ jobs:
         env:
           TAG: ${{ github.event.number }}-${{ github.event.pull_request.head.sha }}
           # We tag with the GitHub PR number
-          NPM_TAG: ${ github.event.number }
+          NPM_TAG: ${{ github.event.number }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
