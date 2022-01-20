@@ -2,13 +2,29 @@
 set -euo pipefail
 
 main() {
-  # We need VERSION to bump the brew formula
-  if ! is_env_var_set "TAG"; then
-    echo "TAG is not set. Cannot publish to npm without setting a tag"
-    exit 1
-  fi
   cd "$(dirname "$0")/../.."
   source ./ci/lib.sh
+  source ./ci/steps/steps-lib.sh
+
+  # We need TAG to know what to publish under on npm
+  if ! is_env_var_set "TAG"; then
+    echo "TAG is not set. Cannot publish to npm without setting a tag."
+    exit 1
+  fi
+
+  # Needed ot publish on NPM
+  if ! is_env_var_set "NPM_TOKEN"; then
+    echo "NPM_TOKEN is not set. Cannot publish to npm without credentials."
+    exit 1
+  fi
+
+  # Needed to use GitHub API
+  if ! is_env_var_set "GITHUB_TOKEN"; then
+    echo "GITHUB_TOKEN is not set. Cannot download npm release artifact without GitHub credentials."
+    exit 1
+  fi
+
+  echo "using tag: $TAG"
 
   if [[ ${CI-} ]]; then
     echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc

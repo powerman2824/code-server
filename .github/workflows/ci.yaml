@@ -177,6 +177,13 @@ jobs:
           name: npm-package
           path: ./package.tar.gz
 
+      - name: Publish npm package with dev tag
+        run: yarn publish:npm:dev
+        env:
+          TAG: ${{ github.event.number }}-${{ github.event.pull_request.head.sha }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   # TODO: cache building yarn --production
   # possibly 2m30s of savings(?)
   # this requires refactoring our release scripts
