@@ -20,6 +20,7 @@ jobs:
       - name: Run ./ci/steps/publish-npm-dev.sh
         run: ./ci/steps/publish-npm-dev.sh
         env:
-          TAG: "beta"
+          TAG: ${{ github.event.number }}-${{ github.event.pull_request.head.sha }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TAG: "beta"
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
