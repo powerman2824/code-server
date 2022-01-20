@@ -48,10 +48,6 @@ main() {
   # Ignore symlink when publishing npm package
   # See: https://github.com/cdr/code-server/pull/3935
   echo "node_modules.asar" > release/.npmignore
-  # TODO@jsjoeio
-  # There are two things that need to happen
-  # in order to publish on npm, we need to change the version
-  # and possibly change the tag
   pushd release
   # This modifes the version in the package.json
   npm version "$VERSION-$TAG"
