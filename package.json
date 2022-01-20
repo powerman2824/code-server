@@ -1,7 +1,7 @@
 {
   "name": "code-server",
   "license": "MIT",
-  "version": "4.0.1-4769-cbb934c72ccf101aebb6827af4a045ac9063a910",
+  "version": "4.0.1-4769-cbb934c72ccf101aebb6827af4a045ac9063a911",
   "description": "Run VS Code on a remote server.",
   "homepage": "https://github.com/cdr/code-server",
   "bugs": {
